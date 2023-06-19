@@ -2,7 +2,7 @@
 
 int main() {
     int size, i;
-    int min, max;
+    int evenSum = 0, oddSum = 0;
 
     printf("Enter the size of the array: ");
     scanf("%d", &size);
@@ -14,20 +14,17 @@ int main() {
         scanf("%d", &arr[i]);
     }
 
-    min = arr[0];
-    max = arr[0];
-
-    for (i = 1; i < size; i++) {
-        if (arr[i] < min) {
-            min = arr[i];
-        }
-        if (arr[i] > max) {
-            max = arr[i];
+    for (i = 0; i < size; i++) {
+        if (i % 2 == 0) {
+            evenSum += arr[i];
+        } else {
+            oddSum += arr[i];
         }
     }
 
-    printf("Minimum value in the array: %d\n", min);
-    printf("Maximum value in the array: %d\n", max);
+    printf("Sum of even-indexed elements: %d\n", evenSum);
+    printf("Sum of odd-indexed elements: %d\n", oddSum);
+    printf("Difference: %d\n", evenSum - oddSum);
 
     return 0;
 }
