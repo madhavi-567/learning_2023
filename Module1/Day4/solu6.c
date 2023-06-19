@@ -1,33 +1,23 @@
 #include <stdio.h>
+#include <ctype.h>
 
 int main() {
-    int size, i;
-    int min, max;
+    char str[100];
+    int i = 0;
 
-    printf("Enter the size of the array: ");
-    scanf("%d", &size);
+    printf("Enter a string: ");
+    fgets(str, sizeof(str), stdin);
 
-    int arr[size];
-
-    printf("Enter the elements of the array:\n");
-    for (i = 0; i < size; i++) {
-        scanf("%d", &arr[i]);
+    while (str[i] != '\0') {
+        if (isupper(str[i])) {
+            str[i] = tolower(str[i]);
+        } else if (islower(str[i])) {
+            str[i] = toupper(str[i]);
+        }
+        i++;
     }
 
-    min = arr[0];
-    max = arr[0];
-
-    for (i = 1; i < size; i++) {
-        if (arr[i] < min) {
-            min = arr[i];
-        }
-        if (arr[i] > max) {
-            max = arr[i];
-        }
-    }
-
-    printf("Minimum value in the array: %d\n", min);
-    printf("Maximum value in the array: %d\n", max);
+    printf("Toggled case string: %s\n", str);
 
     return 0;
 }
