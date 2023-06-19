@@ -1,8 +1,7 @@
 #include <stdio.h>
 
 int main() {
-    int size, i;
-    int min, max;
+    int size, i, temp;
 
     printf("Enter the size of the array: ");
     scanf("%d", &size);
@@ -14,20 +13,18 @@ int main() {
         scanf("%d", &arr[i]);
     }
 
-    min = arr[0];
-    max = arr[0];
-
-    for (i = 1; i < size; i++) {
-        if (arr[i] < min) {
-            min = arr[i];
-        }
-        if (arr[i] > max) {
-            max = arr[i];
-        }
+    // Reverse the array
+    for (i = 0; i < size / 2; i++) {
+        temp = arr[i];
+        arr[i] = arr[size - 1 - i];
+        arr[size - 1 - i] = temp;
     }
 
-    printf("Minimum value in the array: %d\n", min);
-    printf("Maximum value in the array: %d\n", max);
+    printf("Reversed array:\n");
+    for (i = 0; i < size; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
 
     return 0;
 }
